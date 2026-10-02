@@ -20,7 +20,6 @@
           body{min-height:100%;padding:26px 18px 90px;position:relative;overflow-x:hidden}
           .hidden{display:none!important}
 
-          /* custom dot cursor */
           .cur-dot{position:fixed;top:0;left:0;width:10px;height:10px;border-radius:50%;background:var(--acc);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .18s ease,height .18s ease,background .18s ease;box-shadow:0 0 12px var(--acc),0 0 24px var(--glow);mix-blend-mode:screen}
           .cur-dot.hover{width:26px;height:26px;background:var(--acc2);box-shadow:0 0 20px var(--acc),0 0 40px var(--glow)}
           .cur-ring{position:fixed;top:0;left:0;width:34px;height:34px;border-radius:50%;border:1px solid rgba(196,181,253,.4);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .22s ease,height .22s ease,border-color .22s ease}
@@ -28,7 +27,6 @@
           a,button,summary,.tab,input,details{cursor:none}
           @media (hover:none),(pointer:coarse){body,a,button,summary,.tab,input,details{cursor:auto}.cur-dot,.cur-ring{display:none}}
 
-          /* wallpaper + effects */
           .wallLayer{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
           .wallLayer .wallImg{position:absolute;inset:-40px;background-image:var(--wall);background-size:cover;background-position:center;filter:brightness(var(--wall-dim)) saturate(1.15) contrast(1.05);transform:scale(var(--wall-scale));will-change:transform;animation:wallDrift 70s ease-in-out infinite alternate;transition:background-image .5s ease,filter .3s ease}
           @keyframes wallDrift{0%{transform:scale(var(--wall-scale)) translate3d(-8px,-6px,0)}100%{transform:scale(calc(var(--wall-scale) + .05)) translate3d(10px,8px,0)}}
@@ -40,7 +38,6 @@
           body[data-stars="1"] .starsFx{opacity:1}
           body[data-rain="1"] .rainFx{opacity:1}
           body[data-balls="1"] .ballFx{opacity:1}
-          body[data-snow="1"] .snowFx,body[data-balls="1"] .ballFx{opacity:1}
 
           .snowFx i{position:absolute;top:-10vh;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,#c9c4ff 60%,transparent 70%);opacity:.75;filter:drop-shadow(0 0 5px rgba(255,255,255,.7));animation:fall linear infinite}
           @keyframes fall{0%{transform:translate3d(0,-10vh,0)}100%{transform:translate3d(var(--dx,12px),110vh,0)}}
@@ -62,13 +59,13 @@
           .rainFx i{position:absolute;top:-12vh;width:2px;height:14vh;background:linear-gradient(to bottom,transparent,rgba(180,200,255,.85));animation:rainfall linear infinite}
           @keyframes rainfall{0%{transform:translate3d(0,-12vh,0) rotate(12deg)}100%{transform:translate3d(-15px,112vh,0) rotate(12deg)}}
 
-          /* themes */
           body[data-t="purple"]{--acc:#c4b5fd;--acc2:#ede9fe;--glow:rgba(139,92,246,.35);--bd:rgba(160,150,255,.16);--bd-hi:rgba(180,160,255,.55)}
           body[data-t="blue"]{--acc:#93c5fd;--acc2:#dbeafe;--glow:rgba(59,130,246,.35);--bd:rgba(147,197,253,.2);--bd-hi:rgba(180,220,255,.6)}
           body[data-t="mono"]{--acc:#e5e5ea;--acc2:#ffffff;--glow:rgba(200,200,220,.28);--bd:rgba(230,230,240,.18);--bd-hi:rgba(245,245,250,.6)}
           body[data-t="red"]{--acc:#fca5a5;--acc2:#fee2e2;--glow:rgba(239,68,68,.35);--bd:rgba(252,165,165,.2);--bd-hi:rgba(255,200,200,.6)}
           body[data-t="green"]{--acc:#bbf7d0;--acc2:#dcfce7;--glow:rgba(16,185,129,.35);--bd:rgba(160,240,200,.2);--bd-hi:rgba(200,255,220,.6)}
           body[data-t="cyan"]{--acc:#a5f3fc;--acc2:#cffafe;--glow:rgba(6,182,212,.35);--bd:rgba(165,243,252,.2);--bd-hi:rgba(207,250,254,.6)}
+          body[data-t="yellow"]{--acc:#fde047;--acc2:#fef9c3;--glow:rgba(250,204,21,.4);--bd:rgba(253,224,71,.22);--bd-hi:rgba(254,240,138,.6)}
 
           .wrap{position:relative;z-index:2;max-width:1180px;margin:0 auto;animation:enter .6s ease-out both}
           @keyframes enter{from{opacity:0;transform:translate3d(0,14px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
@@ -97,19 +94,19 @@
           .tabs{display:flex;gap:6px;padding:14px 18px 0;flex-wrap:wrap;position:relative}
           .tab{padding:10px 18px;border:1px solid var(--bd);border-radius:11px 11px 0 0;background:rgba(10,8,22,.6);color:var(--dim);font:600 11px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:all .2s;border-bottom:none;text-decoration:none}
           .tab:hover{color:#fff;border-color:var(--bd-hi)}
-          .tab.active,.tab.on{background:rgba(28,22,56,.75);color:#fff;border-color:var(--bd-hi);box-shadow:0 -6px 20px rgba(139,92,246,.28)}
+          .tab.active{background:rgba(28,22,56,.75);color:#fff;border-color:var(--bd-hi);box-shadow:0 -6px 20px rgba(139,92,246,.28)}
           .setWrap{position:relative;display:inline-block}
           .setWrap>summary{list-style:none}
           .setWrap>summary::-webkit-details-marker{display:none}
-          .setPanel{position:absolute;top:calc(100% + 8px);right:0;z-index:60;width:400px;max-width:calc(100vw - 32px);max-height:70vh;overflow-y:auto;border-radius:18px;padding:18px;background:rgba(10,10,22,.96);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border:1px solid var(--bd-hi);box-shadow:0 40px 100px rgba(0,0,0,.8),0 0 60px var(--glow)}
+          .setPanel{position:fixed;top:170px;right:24px;z-index:100;width:420px;max-width:calc(100vw - 32px);max-height:78vh;overflow-y:auto;border-radius:20px;padding:22px;background:rgba(10,10,22,.98);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border:1px solid var(--bd-hi);box-shadow:0 40px 100px rgba(0,0,0,.85),0 0 60px var(--glow)}
           .setPanel h3{margin:0 0 12px;font:700 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--acc);display:flex;align-items:center;gap:8px}
           .setPanel h3::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--bd-hi),transparent)}
-          .setGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px;margin-bottom:14px}
-          .setLink{padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:rgba(12,10,26,.7);color:var(--acc);font:600 11px/1 var(--mono);letter-spacing:.03em;text-decoration:none;text-align:center;transition:all .2s}
-          .setLink:hover{border-color:var(--bd-hi);background:rgba(139,92,246,.16);color:#fff;transform:translate3d(0,-1px,0);box-shadow:0 8px 22px var(--glow)}
+          .setGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+          .setLink{padding:11px 8px;border:1px solid var(--bd);border-radius:10px;background:rgba(12,10,26,.7);color:var(--acc);font:600 11px/1 var(--mono);letter-spacing:.03em;text-decoration:none;text-align:center;cursor:pointer;transition:all .2s}
+          .setLink:hover{border-color:var(--bd-hi);background:rgba(139,92,246,.16);color:#fff;box-shadow:0 8px 22px var(--glow)}
           .setLink.active{border-color:var(--bd-hi);background:rgba(139,92,246,.28);color:#fff;box-shadow:0 0 18px var(--glow)}
-          .wallGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
-          .wallLink{aspect-ratio:1/1;border-radius:10px;border:2px solid var(--bd);background-size:cover;background-position:center;background-color:rgba(0,0,0,.5);position:relative;overflow:hidden;text-decoration:none;transition:all .22s}
+          .wallGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+          .wallLink{aspect-ratio:1/1;border-radius:10px;border:2px solid var(--bd);background-size:cover;background-position:center;background-color:rgba(0,0,0,.5);position:relative;overflow:hidden;text-decoration:none;cursor:pointer;transition:all .22s}
           .wallLink:hover{transform:scale(1.05);border-color:var(--bd-hi)}
           .wallLink.active{border-color:#fff;box-shadow:0 0 26px var(--glow)}
           .wallLink::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.8))}
@@ -165,7 +162,7 @@
           .gameCard .btn{flex:1;text-align:center}
           .toast{position:fixed;left:50%;bottom:26px;z-index:60;border:1px solid var(--bd-hi);background:rgba(10,8,26,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transform:translate3d(-50%,14px,0) scale(.96);opacity:0;pointer-events:none;padding:12px 20px;border-radius:999px;font-size:12px;color:#ffffff;transition:transform .28s ease-out,opacity .28s ease-out}
           .toast.show{opacity:1;transform:translate3d(-50%,0,0) scale(1)}
-          @media (max-width:820px){body{padding:16px 12px 80px}.top{flex-direction:column;align-items:stretch;padding:18px 18px}.tools{flex-direction:row;flex-wrap:wrap;gap:10px}.find{min-width:0;flex:1}.gb{grid-template-columns:1fr}h1{font-size:17px}.gameGrid{grid-template-columns:1fr}.setPanel{right:auto;left:0}}
+          @media (max-width:820px){body{padding:16px 12px 80px}.top{flex-direction:column;align-items:stretch;padding:18px 18px}.tools{flex-direction:row;flex-wrap:wrap;gap:10px}.find{min-width:0;flex:1}.gb{grid-template-columns:1fr}h1{font-size:17px}.gameGrid{grid-template-columns:1fr}.setPanel{right:12px;left:12px;width:auto;top:140px}}
           @media (prefers-reduced-motion:reduce){.cur,.hname,.shellGlow,.wallLayer .wallImg,.ballFx i{animation:none}.cur-dot,.cur-ring{display:none}body,a,button,summary,.tab,input,details{cursor:auto}}
         ]]></style>
       </head>
@@ -193,44 +190,45 @@
             </div>
           </div>
           <div class="tabs">
-            <a class="tab active" href="?tab=links" id="tabLinks">Links</a>
-            <a class="tab" href="?tab=games" id="tabGames">Games</a>
+            <button class="tab active" id="tabLinks" type="button">Links</button>
+            <button class="tab" id="tabGames" type="button">Games</button>
             <details class="setWrap" id="setWrap">
               <summary class="tab">Settings</summary>
-              <div class="setPanel">
+              <div class="setPanel" id="setPanel">
                 <h3>theme</h3>
                 <div class="setGrid">
-                  <a class="setLink" href="?theme=purple" data-k="theme" data-v="purple">purple</a>
-                  <a class="setLink" href="?theme=blue" data-k="theme" data-v="blue">blue</a>
-                  <a class="setLink" href="?theme=cyan" data-k="theme" data-v="cyan">cyan</a>
-                  <a class="setLink" href="?theme=green" data-k="theme" data-v="green">green</a>
-                  <a class="setLink" href="?theme=red" data-k="theme" data-v="red">red</a>
-                  <a class="setLink" href="?theme=mono" data-k="theme" data-v="mono">mono</a>
+                  <a class="setLink" data-k="theme" data-v="purple">purple</a>
+                  <a class="setLink" data-k="theme" data-v="blue">blue</a>
+                  <a class="setLink" data-k="theme" data-v="cyan">cyan</a>
+                  <a class="setLink" data-k="theme" data-v="green">green</a>
+                  <a class="setLink" data-k="theme" data-v="red">red</a>
+                  <a class="setLink" data-k="theme" data-v="yellow">yellow</a>
+                  <a class="setLink" data-k="theme" data-v="mono">mono</a>
                 </div>
                 <h3>wallpaper</h3>
                 <div class="wallGrid">
-                  <a class="wallLink" href="?wall=none" data-k="wall" data-v="none" data-w="none"><span>none</span></a>
-                  <a class="wallLink" href="?wall=anime" data-k="wall" data-v="anime" style="background-image:url('https://i.ibb.co/tTrhxzyS/uwp5095159.avif')"><span>anime</span></a>
-                  <a class="wallLink" href="?wall=stadium" data-k="wall" data-v="stadium" style="background-image:url('https://i.ibb.co/NgzZm4FZ/uwp4376378.avif')"><span>stadium</span></a>
-                  <a class="wallLink" href="?wall=lambo" data-k="wall" data-v="lambo" style="background-image:url('https://i.ibb.co/0yVFsHPq/uwp5095504.avif')"><span>lambo</span></a>
-                  <a class="wallLink" href="?wall=night" data-k="wall" data-v="night" style="background-image:url('https://i.ibb.co/j11Q4rG/wp14253291.jpg')"><span>night</span></a>
+                  <a class="wallLink" data-k="wall" data-v="none" data-w="none"><span>none</span></a>
+                  <a class="wallLink" data-k="wall" data-v="anime" style="background-image:url('https://i.ibb.co/tTrhxzyS/uwp5095159.avif')"><span>anime</span></a>
+                  <a class="wallLink" data-k="wall" data-v="stadium" style="background-image:url('https://i.ibb.co/NgzZm4FZ/uwp4376378.avif')"><span>stadium</span></a>
+                  <a class="wallLink" data-k="wall" data-v="lambo" style="background-image:url('https://i.ibb.co/0yVFsHPq/uwp5095504.avif')"><span>lambo</span></a>
+                  <a class="wallLink" data-k="wall" data-v="night" style="background-image:url('https://i.ibb.co/j11Q4rG/wp14253291.jpg')"><span>night</span></a>
                 </div>
                 <h3>effects</h3>
                 <div class="setGrid">
-                  <a class="setLink" href="?snow=1" data-k="snow" data-v="1">snow on</a>
-                  <a class="setLink" href="?snow=0" data-k="snow" data-v="0">snow off</a>
-                  <a class="setLink" href="?balls=1" data-k="balls" data-v="1">balls on</a>
-                  <a class="setLink" href="?balls=0" data-k="balls" data-v="0">balls off</a>
-                  <a class="setLink" href="?stars=1" data-k="stars" data-v="1">stars on</a>
-                  <a class="setLink" href="?stars=0" data-k="stars" data-v="0">stars off</a>
-                  <a class="setLink" href="?glitch=1" data-k="glitch" data-v="1">glitch on</a>
-                  <a class="setLink" href="?glitch=0" data-k="glitch" data-v="0">glitch off</a>
-                  <a class="setLink" href="?rain=1" data-k="rain" data-v="1">rain on</a>
-                  <a class="setLink" href="?rain=0" data-k="rain" data-v="0">rain off</a>
+                  <a class="setLink" data-k="snow" data-v="1">snow on</a>
+                  <a class="setLink" data-k="snow" data-v="0">snow off</a>
+                  <a class="setLink" data-k="balls" data-v="1">balls on</a>
+                  <a class="setLink" data-k="balls" data-v="0">balls off</a>
+                  <a class="setLink" data-k="stars" data-v="1">stars on</a>
+                  <a class="setLink" data-k="stars" data-v="0">stars off</a>
+                  <a class="setLink" data-k="glitch" data-v="1">glitch on</a>
+                  <a class="setLink" data-k="glitch" data-v="0">glitch off</a>
+                  <a class="setLink" data-k="rain" data-v="1">rain on</a>
+                  <a class="setLink" data-k="rain" data-v="0">rain off</a>
                 </div>
                 <h3>reset</h3>
                 <div class="setGrid">
-                  <a class="setLink" href="?reset=1">reset all</a>
+                  <a class="setLink" data-k="reset" data-v="1">reset all</a>
                 </div>
               </div>
             </details>
@@ -272,7 +270,7 @@
               document.addEventListener("mousemove", function(e){ mx = e.clientX; my = e.clientY; });
               document.addEventListener("mouseover", function(e){
                 var t = e.target;
-                if(t && t.closest && (t.closest("a") || t.closest("button") || t.closest("summary") || t.closest(".tab") || t.closest(".btn") || t.closest(".li"))){
+                if(t && t.closest && (t.closest("a") || t.closest("button") || t.closest("summary") || t.closest(".tab") || t.closest(".btn") || t.closest(".li") || t.closest(".setLink") || t.closest(".wallLink"))){
                   dot.classList.add("hover"); ring.classList.add("hover");
                 } else {
                   dot.classList.remove("hover"); ring.classList.remove("hover");
@@ -280,68 +278,77 @@
               });
             })();
 
-            /* ---------- SETTINGS FROM URL ---------- */
+            /* ---------- STATE ---------- */
             var WALLS = {
               none:"", anime:"https://i.ibb.co/tTrhxzyS/uwp5095159.avif", stadium:"https://i.ibb.co/NgzZm4FZ/uwp4376378.avif",
               lambo:"https://i.ibb.co/0yVFsHPq/uwp5095504.avif", night:"https://i.ibb.co/j11Q4rG/wp14253291.jpg"
             };
-            function readParams(){
-              try{
-                var params = new URLSearchParams(window.location.search);
-                var theme = params.get("theme"), wall = params.get("wall"), tab = params.get("tab");
-                if(params.get("reset") === "1"){ try{ localStorage.clear(); }catch(e){} window.location.href = window.location.pathname; return; }
-                var stored = {};
-                try{ stored = JSON.parse(localStorage.getItem("pi-state") || "{}"); }catch(e){}
-                if(theme) stored.theme = theme;
-                if(wall) stored.wall = wall;
-                if(params.get("snow") != null) stored.snow = params.get("snow");
-                if(params.get("balls") != null) stored.balls = params.get("balls");
-                if(params.get("stars") != null) stored.stars = params.get("stars");
-                if(params.get("glitch") != null) stored.glitch = params.get("glitch");
-                if(params.get("rain") != null) stored.rain = params.get("rain");
-                if(tab) stored.tab = tab;
-                try{ localStorage.setItem("pi-state", JSON.stringify(stored)); }catch(e){}
-                applyState(stored);
-                if(window.location.search){ try{ window.history.replaceState(null, "", window.location.pathname); }catch(e){} }
-              }catch(e){
-                applyState({});
-              }
-            }
-            function applyState(s){
-              s = s || {};
-              var theme = s.theme || "purple";
-              document.body.setAttribute("data-t", theme);
-              var wallKey = s.wall || "none";
-              var wallUrl = WALLS[wallKey] || "";
+            var state = {
+              theme: "purple",
+              wall: "none",
+              snow: "0",
+              balls: "0",
+              stars: "0",
+              glitch: "0",
+              rain: "0",
+              tab: "links"
+            };
+            try {
+              var stored = JSON.parse(localStorage.getItem("pi-state") || "{}");
+              for(var k in stored) if(state.hasOwnProperty(k)) state[k] = String(stored[k]);
+            } catch(e){}
+
+            function saveState(){ try{ localStorage.setItem("pi-state", JSON.stringify(state)); }catch(e){} }
+
+            function applyState(){
+              document.body.setAttribute("data-t", state.theme);
+              var wallUrl = WALLS[state.wall] || "";
               document.body.style.setProperty("--wall", wallUrl ? "url('" + wallUrl + "')" : "none");
-              document.body.setAttribute("data-snow", s.snow === "1" ? "1" : "0");
-              document.body.setAttribute("data-balls", s.balls === "1" ? "1" : "0");
-              document.body.setAttribute("data-stars", s.stars === "1" ? "1" : "0");
-              document.body.setAttribute("data-glitch", s.glitch === "1" ? "1" : "0");
-              document.body.setAttribute("data-rain", s.rain === "1" ? "1" : "0");
-              var tabKey = s.tab || "links";
-              if(tabKey === "games"){
+              document.body.setAttribute("data-snow", state.snow === "1" ? "1" : "0");
+              document.body.setAttribute("data-balls", state.balls === "1" ? "1" : "0");
+              document.body.setAttribute("data-stars", state.stars === "1" ? "1" : "0");
+              document.body.setAttribute("data-glitch", state.glitch === "1" ? "1" : "0");
+              document.body.setAttribute("data-rain", state.rain === "1" ? "1" : "0");
+              // tabs
+              if(state.tab === "games"){
                 $("tabGames").classList.add("active"); $("tabLinks").classList.remove("active");
                 $("panelGames").classList.add("on"); $("panelLinks").classList.remove("on");
               } else {
                 $("tabLinks").classList.add("active"); $("tabGames").classList.remove("active");
                 $("panelLinks").classList.add("on"); $("panelGames").classList.remove("on");
               }
-              setTimeout(function(){
-                var all = document.querySelectorAll(".setLink,.wallLink");
-                for(var i=0;i<all.length;i++){
-                  var el = all[i];
-                  var k = el.getAttribute("data-k"), v = el.getAttribute("data-v");
-                  if(k === "theme" && v === theme) el.classList.add("active"); else el.classList.remove("active");
-                  if(k === "wall" && v === wallKey) el.classList.add("active"); else el.classList.remove("active");
-                  if(k === "snow" && v === s.snow) el.classList.add("active");
-                  if(k === "balls" && v === s.balls) el.classList.add("active");
-                  if(k === "stars" && v === s.stars) el.classList.add("active");
-                  if(k === "glitch" && v === s.glitch) el.classList.add("active");
-                  if(k === "rain" && v === s.rain) el.classList.add("active");
-                }
-              }, 0);
+              // active markers
+              var all = document.querySelectorAll(".setLink,.wallLink");
+              for(var i=0;i<all.length;i++){
+                var el = all[i];
+                var k = el.getAttribute("data-k"), v = el.getAttribute("data-v");
+                if(!k || !v) continue;
+                var cur = state[k];
+                if(v === cur) el.classList.add("active"); else el.classList.remove("active");
+              }
             }
+
+            /* ---------- SETTINGS CLICK HANDLER ---------- */
+            document.addEventListener("click", function(ev){
+              var t = ev.target.closest && ev.target.closest(".setLink,.wallLink");
+              if(!t) return;
+              ev.preventDefault();
+              var k = t.getAttribute("data-k"), v = t.getAttribute("data-v");
+              if(k === "reset"){
+                try{ localStorage.removeItem("pi-state"); }catch(e){}
+                state = { theme:"purple", wall:"none", snow:"0", balls:"0", stars:"0", glitch:"0", rain:"0", tab:"links" };
+                saveState(); applyState(); say("reset");
+                return;
+              }
+              if(k && v != null){ state[k] = v; saveState(); applyState(); say(k + " \u2192 " + v); }
+            }, true);
+
+            /* ---------- TABS ---------- */
+            function setTab(name){
+              state.tab = name; saveState(); applyState();
+            }
+            $("tabLinks").addEventListener("click", function(e){ e.preventDefault(); setTab("links"); });
+            $("tabGames").addEventListener("click", function(e){ e.preventDefault(); setTab("games"); });
 
             /* ---------- DATA ---------- */
             var DATA = [
@@ -467,7 +474,7 @@
             buildSnow(); buildBalls(); buildStars(); buildRain();
 
             /* ---------- BOOT ---------- */
-            readParams();
+            applyState();
             update();
           })();
         ]]></script>
