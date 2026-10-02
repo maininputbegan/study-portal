@@ -499,4 +499,19 @@ h1{margin:0;display:flex;align-items:center;gap:12px;font-size:19px;font-weight:
   function buildSnow(){ var sf = $("snowFx"); sf.innerHTML = ""; for(var i = 0; i < 60; i++){ var p = mk("i"); var left = Math.random()*100, dur = 6 + Math.random()*10, delay = -Math.random()*dur, dx = Math.round((Math.random()*40 - 20)*10)/10, size = (3 + Math.random()*4).toFixed(1); p.setAttribute("style", "left:" + left + "%;width:" + size + "px;height:" + size + "px;--dx:" + dx + "px;animation-duration:" + dur + "s;animation-delay:" + delay + "s;"); sf.appendChild(p); } }
   function buildBalls(){ var bf = $("ballFx"); bf.innerHTML = ""; for(var i = 0; i < 24; i++){ var p = mk("i"); var left = Math.random()*100, dur = 8 + Math.random()*14, delay = -Math.random()*dur, bx = Math.round((Math.random()*180 - 90)); p.setAttribute("style", "left:" + left + "%;--bx:" + bx + "px;animation-duration:" + dur + "s;animation-delay:" + delay + "s;"); bf.appendChild(p); } }
   function buildStars(){ var stf = $("starsFx"); stf.innerHTML = ""; for(var i = 0; i < 20; i++){ var p = mk("i"); var left = Math.random()*100, delay = Math.random()*6; p.setAttribute("style", "left:" + left + "%;--d:" + delay + "s;"); stf.appendChild(p); } }
-  function buildRain(){ var rf = $("rainFx"); rf.innerHTML = ""; for(var i = 0; i < 80; i++){ var p = mk("i"); var left = Math.random()*100, dur = 0.6 + Math.random()*1.2, delay = -Math.random()*dur, op = (0.2 + Math.random()*0.5).to
+  function buildRain(){ var rf = $("rainFx"); rf.innerHTML = ""; for(var i = 0; i < 80; i++){ var p = mk("i"); var left = Math.random()*100, dur = 0.6 + Math.random()*1.2, delay = -Math.random()*dur, op = (0.2 + Math.random()*0.5).toFixed(2); p.setAttribute("style", "left:" + left + "%;animation-duration:" + dur + "s;animation-delay:" + delay + "s;opacity:" + op); rf.appendChild(p); } }
+
+  // Initialize Effects
+  buildSnow();
+  buildBalls();
+  buildStars();
+  buildRain();
+
+  // Apply saved state and render the list
+  apply();
+  update();
+
+})();
+</script>
+</body>
+</html>
